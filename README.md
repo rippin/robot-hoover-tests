@@ -94,9 +94,12 @@ The repository follows this folder structure:
 
 ```bash
 ├── features
-│   ├── robot-hoover.feature   # Cucumber feature file defining scenarios
+│   ├── hoover.feature         # Cucumber feature file defining scenarios
+│   └── invalid-inputs.feature # Cucumber feature file defining scenarios
 │   └── steps.js               # Step definitions to run feature scenarios
-├── report                     # Test execution reports
+├── helpers
+│   ├── apiHelpers.js          # Helper file for the api
+│   └── utils.js               # Utils file
 ├── package.json               # Project dependencies and scripts
 └── README.md                  # Project instructions
 ```
