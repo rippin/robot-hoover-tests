@@ -20,9 +20,7 @@
     "*.{js,mjs,ts,tsx,yml,json}": [
       "prettier --write .",
       "eslint --max-warnings 0 --no-warn-ignored ."
-    ],
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
+    ]
   },
   "devDependencies": {
     "@cucumber/cucumber": "^11.0.0",
