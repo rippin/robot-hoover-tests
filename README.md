@@ -192,5 +192,3 @@ I set up the project with linting and formatting for consistency.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-> > > > > > > eric-franco-hoover
