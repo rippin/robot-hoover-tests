@@ -1,0 +1,32 @@
+{
+  "name": "robot-hoover-tests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "cucumber-js",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky && husky install",
+    "lint": "eslint ."
+  },
+  "author": "Eric Franco",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.7.7"
+  },
+  "lint-staged": {
+    "*.{js,mjs,ts,tsx,yml,json}": [
+      "prettier --check .",
+      "eslint --max-warnings 0 --no-warn-ignored ."
+    ]
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.0.0",
+    "eslint": "^9.10.0",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3"
+  }
+}
