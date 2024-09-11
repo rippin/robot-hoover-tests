@@ -1,8 +1,8 @@
 Feature: Robotic Hoover API Test
   The API should correctly navigate the hoover based on room dimensions, dirt patches, and driving instructions.
 
-  Scenario: Hoover cleans patches of dirt and moves correctly
-    Given the room size is 5 by 5
+  Scenario: Hoover cleans patches of dirt and moves correctly (rectangle)
+    Given the room size is 7 by 8
     And the hoover starts at 1, 2
     And the patches of dirt are:
       | 1 | 0 |
@@ -65,7 +65,7 @@ Feature: Robotic Hoover API Test
     And the number of cleaned patches should be 1
 
   Scenario: Hoover attempts to clean the same dirt patch multiple times
-    Given the room size is 5 by 5
+    Given the room size is 7 by 7
     And the hoover starts at 1, 1
     And the patches of dirt are:
       | 1 | 1 |

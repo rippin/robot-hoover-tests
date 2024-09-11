@@ -7,7 +7,15 @@ Feature: Invalid Inputs for Robotic Hoover API Test
     And the patches of dirt are:
       | 1 | 1 |
     When the driving instructions are "N"
-    Then the request should return an error message "Bad Request" "Failed to read HTTP message" 400
+    Then the request should return an error message 400 "Bad Request" "Failed to read HTTP message"
+
+  Scenario: Room dimmensions are 0 by 0
+    Given the room size is 0 by 0
+    And the hoover starts at 0, 0
+    And the patches of dirt are:
+      | 1 | 1 |
+    When the driving instructions are "N"
+    Then the request should return an error message 400 "Bad Request" "Failed to read HTTP message" 
 
   Scenario: Invalid room dimensions
     Given the room size is -5 by 5
@@ -15,7 +23,7 @@ Feature: Invalid Inputs for Robotic Hoover API Test
     And the patches of dirt are:
       | 1 | 1 |
     When the driving instructions are "N"
-    Then the request should return an error message "Bad Request" "Failed to read HTTP message" 400
+    Then the request should return an error message 400 "Bad Request" "Failed to read HTTP message"
 
   Scenario: Missing hoover starting coordinates
     Given the room size is 5 by 5
@@ -23,7 +31,7 @@ Feature: Invalid Inputs for Robotic Hoover API Test
     And the patches of dirt are:
       | 1 | 1 |
     When the driving instructions are "N"
-    Then the request should return an error message "Bad Request" "Failed to read HTTP message" 400
+    Then the request should return an error message 400 "Bad Request" "Failed to read HTTP message"
 
   Scenario: Hoover starting coordinates outside the room
     Given the room size is 5 by 5
@@ -31,7 +39,7 @@ Feature: Invalid Inputs for Robotic Hoover API Test
     And the patches of dirt are:
       | 1 | 1 |
     When the driving instructions are "N"
-    Then the request should return an error message "Bad Request" "Failed to read HTTP message" 400
+    Then the request should return an error message 400 "Bad Request" "Failed to read HTTP message"
 
   Scenario: Missing dirt patches
     Given the room size is 5 by 5
@@ -47,7 +55,7 @@ Feature: Invalid Inputs for Robotic Hoover API Test
     And the patches of dirt are:
       | -1 | 0 |
     When the driving instructions are "N"
-    Then the request should return an error message "Bad Request" "Failed to read HTTP message" 400
+    Then the request should return an error message 400 "Bad Request" "Failed to read HTTP message"
 
   Scenario: Missing driving instructions
     Given the room size is 5 by 5
@@ -55,7 +63,7 @@ Feature: Invalid Inputs for Robotic Hoover API Test
     And the patches of dirt are:
       | 1 | 1 |
     When the driving instructions are missing
-    Then the request should return an error message "Bad Request" "Failed to read HTTP message" 400
+    Then the request should return an error message 400 "Bad Request" "Failed to read HTTP message"
   
   Scenario: Invalid driving instructions (non-cardinal directions)
     Given the room size is 5 by 5
@@ -63,7 +71,7 @@ Feature: Invalid Inputs for Robotic Hoover API Test
     And the patches of dirt are:
       | 1 | 1 |
     When the driving instructions are "NXYS"
-    Then the request should return an error message "Bad Request" "Failed to read HTTP message" 400
+    Then the request should return an error message 400 "Bad Request" "Failed to read HTTP message"
 
   Scenario: Invalid patches of dirt (out of range of dimensions)
     Given the room size is 5 by 5
@@ -73,7 +81,7 @@ Feature: Invalid Inputs for Robotic Hoover API Test
       | 2 | 7 |  
       | 1 | 1 |
     When the driving instructions are "NNE"
-    Then the request should return an error message "Bad Request" "Failed to read HTTP message" 400
+    Then the request should return an error message 400 "Bad Request" "Failed to read HTTP message"
 
   Scenario: Invalid patches of dirt (non numerical value)
     Given the room size is 5 by 5
@@ -83,4 +91,4 @@ Feature: Invalid Inputs for Robotic Hoover API Test
       | 2 | invalid | 
       | 1 | 1 |
     When the driving instructions are "NNE"
-    Then the request should return an error message "Bad Request" "Failed to read HTTP message" 400
+    Then the request should return an error message 400 "Bad Request" "Failed to read HTTP message"

@@ -47,6 +47,15 @@ When('the driving instructions are {string}', async function (instru) {
   this.response = await sendHooverRequest(payload);
 });
 
+When('the driving instructions are missing', async function () {
+  const payload = {
+    roomSize: this.roomSize,
+    coords: this.coords,
+    patches: this.patches,
+  };
+  this.response = await sendHooverRequest(payload);
+});
+
 Then('the final hoover position should be {int}, {int}', function (x, y) {
   if (!this.error && this.response.error) {
     throw new Error(`Expected valid output, but got error: ${this.result.error.message}`);
@@ -62,8 +71,8 @@ Given('the number of cleaned patches should be {int}', function (patches) {
 });
 
 Then(
-  'the request should return an error message {string} {string} {int}',
-  function (error, message, status) {
+  'the request should return an error message {int} {string} {string}',
+  function (status, error, message) {
     assert.strictEqual(this.response.status, status);
     assert.strictEqual(this.response.data.error, error);
     assert.strictEqual(this.response.data.message, message);
@@ -72,6 +81,11 @@ Then(
 
 Given('the room size is missing', function () {
   this.roomSize = [];
+});
+
+Given('the hoover starts at missing', function () {
+  // Write code here that turns the phrase above into concrete actions
+  this.coords = undefined;
 });
 
 /* Bugs so far. 
